@@ -8,7 +8,11 @@
 </head>
 <body>
     <h1>Welcome to my BLOG!!!!</h1>
-    <hr>{{posts}}<hr>
+    <hr>{%for post in posts%}
+            <p style="font-family: 微軟正黑體; font-size: 14pt;font-weight: bold;"></p>
+            <a href="/post/{{post.slug}}">{{post.title}}</a>
+    {%endfor%}
+    <hr>
     <h3>現在時刻:{{now}}</h3>
 </body>
 </html>
