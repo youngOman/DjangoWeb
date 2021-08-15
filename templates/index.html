@@ -5,8 +5,18 @@
 {%endblock%}
 {%block content%}
     {%for post in posts%}
-        <p style="font-family: 微軟正黑體;font-size: 14pt;font-weight: bold;">
-            <a href="/post/{{post.slug}}">{{post.title}}</a>
-        </p>
+    <div class="card">
+        <div class="card-header" style="background-color: rgb(253, 253, 221);">
+            <p style="font-family: 微軟正黑體;font-size: 14pt;font-weight: bold;">
+                <a href="/post/{{post.slug}}">{{post.title}}</a>
+            </p>
+        </div>
+        <div class="card-body">
+            <p>{{post.body | truncatechars:40}}</p><!--truncatechars顯示規定範圍內數字-->
+        </div><!--card-body-->
+        <div class="card-footer text-muted" style="text-align: center;">
+            發佈時間:{{post.pub_date | date:"Y-m-d,h:m:s"}}
+        </div>     
+    </div><!--card-->
     {%endfor%}
 {%endblock%}
