@@ -19,8 +19,8 @@
   position: absolute;right:0;
 }
 #navbar{
-  font-size: 20px;
   padding:1rem;
+  font-size: 20px;
   margin-bottom: 2rem;
 }
 .carousel .carousel-item{
@@ -28,21 +28,22 @@
   height: 100%;
   object-fit: fill;
 }
+
 </style>
 </head>
 <body>
     <div class="container-fluid">
         {%include 'header.html'%}
         <div class="row justify-content-md-center">
-          <div class="col-md-3">
-            <div class="card">
+          <div class="col-md-2">
+            <div class="card border-dark mb-3 ">
               <img src="{% static 'images/bae.jpg' %}" class="card-img-top" alt='圖片失效就顯示這段文字'>  
               <div class="card-body">
                   <h3 class="card-title">MENU</h3>
-                  <p class="card-text">here are some choices</p>
+                  <p class="card-text">here are some choicesA-A</p>
               </div>
               <div class="card-body">
-                  <ul class='list-group list-group-flush' >  
+                  <ul class='list-group list-group-flush'>  
                       <a href="/" class="list-group-item">HOME</a>
                       <a href="https://www.twitch.tv/" class="list-group-item">=U=</a>
                       <a href="https://wall.alphacoders.com/big.php?i=682156" class="list-group-item">YAHELLO</a>
@@ -50,7 +51,7 @@
               </div>
             </div><!--"card"-->
           </div><!--col-md-4-->
-          <div class="col-md-9">
+          <div class="col-md-10">
             <div class="card">
               <div class="card-body">
                 <div class="card-header">
