@@ -7,10 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{%block title%} {%endblock%}</title>
-<link rel="stylesheet" href="{% static 'bootstrap4/css/bootstrap.min.css' %}">
-<script src="{% static 'bootstrap4/js/bootstrap.min.js' %}"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <style>
 .list-group-item{ /*MENU TEXT*/
   font-size: 20px;
@@ -28,7 +24,6 @@
   height: 100%;
   object-fit: fill;
 }
-
 </style>
 </head>
 <body>
@@ -37,28 +32,30 @@
         <div class="row justify-content-md-center">
           <div class="col-md-2">
             <div class="card border-dark mb-3 ">
-              <img src="{% static 'images/bae.jpg' %}" class="card-img-top" alt='圖片失效就顯示這段文字'>  
+              <img src="{% static 'images/bae.jpg' %}" class="card-img-top" alt='img not work'>  
               <div class="card-body">
-                  <h3 class="card-title">MENU</h3>
-                  <p class="card-text">here are some choicesA-A</p>
+                  <!-- <h3 class="card-title">MENU</h3> -->
               </div>
               <div class="card-body">
                   <ul class='list-group list-group-flush'>  
-                      <a href="/" class="list-group-item">HOME</a>
-                      <a href="https://www.twitch.tv/" class="list-group-item">=U=</a>
-                      <a href="https://wall.alphacoders.com/big.php?i=682156" class="list-group-item">YAHELLO</a>
+                      <a href="/" class="list-group-item">投票區</a>
+                      <a href="https://www.twitch.tv/" class="list-group-item">哈啦區</a>
+                      <a href="https://wall.alphacoders.com/big.php?i=682156" class="list-group-item">會員中心</a>
                   </ul>
               </div>
             </div><!--"card"-->
+            <div class="tenor-gif-embed" data-postid="21220114" data-share-method="host" data-aspect-ratio="0.821875" data-width="100%">
+              <a href="https://tenor.com/view/nagatoro-ijiranaide-noodles-please-don-uzaki-gif-21220114">Nagatoro Ijiranaide GIF</a>
+            </div>
           </div><!--col-md-4-->
           <div class="col-md-10">
             <div class="card">
               <div class="card-body">
                 <div class="card-header">
-                  {%block headmessage%} {%endblock%}
+                  {%block headmessage%} {%endblock%} <!--文章列表index.html-->
                   </div>
                   <div class="card-body">
-                  {%block content%} {%endblock%}
+                  {%block content%} {%endblock%}<!--文章body index.html-->
                   </div>
               </div><!--card-body-->
             </div><!--card-->
@@ -66,7 +63,12 @@
         </div><!--row-->
         <div class="row justify-content-center">
           <div class="col-sm-6 col-lg-10">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <img src="{% static '/images/cute.jpg' %}" class="d-block w-100" alt="...">
@@ -75,18 +77,18 @@
                   <img src="{% static '/images/girl.jpg' %}" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                  <img src="{% static '/images/wat.jpg' %}" class="d-block w-100" alt="...">
+                  <img src="{% static '/images/wat1.jpg' %}" class="d-block w-100" alt="...">
                 </div>
               </div>
-              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div><!--carousel-->
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
           </div><!--col-sm-6 lg-12-->
         </div><!--row-->
         <div class="row justify-content-center">

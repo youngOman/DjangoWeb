@@ -1,0 +1,14 @@
+{% include 'header.html' %}
+{% if message %}
+    <div class="alert alert-primary" role="alert">
+    {{message}}
+    </div>
+{% endif %}
+    <form class="row g-3" action="{% url 'login' %}" method="POST">{% csrf_token %}
+        <tabel>
+            {{login_form.as_table | linenumbers }}
+        </table>
+        <input type="submit" value="登入">
+    </form>
+
+
