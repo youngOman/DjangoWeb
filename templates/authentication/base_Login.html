@@ -1,0 +1,29 @@
+{% load static %}<!--存取靜態檔-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'bootstrap5/css/login.css' %}">
+<link rel="stylesheet" href="{% static 'bootstrap5/css/bootstrap.min.css' %}">
+<style>
+#navbar{
+  padding:0.1rem;
+  font-size: 15px;
+}
+</style>
+{% include 'header2.html'%}
+{% block content %}
+{% endblock %}
+</body>
+</html>
+
+
+
+    
+
+

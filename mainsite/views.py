@@ -3,11 +3,11 @@ from django.http import Http404
 from .models import Post,Member,Item,User
 from django.contrib.auth.forms import UserCreationForm
 from .forms import Loginform
+from django.contrib import messages
 # Create your views here.
 def index(request):
 	if 'useraccount' in request.session:
 		useraccount=request.session['account'] #取出
-		useremail=request.session['email'] 
 	posts=Post.objects.all()
 	return render(request,'index.html',locals()) #locals會把所有區域變數使用字典型態打包起來
 def video(request):
@@ -53,25 +53,25 @@ def login(request):
 	if request.method == 'POST':
 		login_form=Loginform(request.POST) 
 		if login_form.is_valid():	 #檢查是否輸入正確		
-			useraccount=request.POST['account'].strip() #去掉前後空白
-			userpassword=request.POST['password'] #使用者輸入由POST傳進來的
-			message='登入成功'
-		try: # 用try是因為真的找不到useraccount的話避免中斷網站程式
-			user=User.objects.get(name=useraccount)
-			if user.password == userpassword:
-				request.session['account']=user.name #使用者的Name
-				request.session['email']=user.email
-				return redirect('/')
-			else:
-				message='密碼錯誤'
-		except:
-			message='無此使用者'
+			login_name=request.POST['account'].strip() #去掉前後空白
+			login_password=request.POST['password'] #使用者輸入由POST傳進來的
+			try: # 若找不到useraccount的話避免中斷網站程式
+				user=User.objects.get(name=login_name)
+				if user.password == login_password:
+					request.session['account']=user.name #使用者的Name
+					request.session['email']=user.email
+					messages.add_message(request,messages.SUCCESS,"成功登入")
+					return redirect('/')
+				else:
+					messages.add_message(request,messages.WARNING,"密碼錯誤")
+			except:
+				messages.add_message(request,messages.WARNING,"無此使用者")
 		else:
-			message='帳號或密碼錯誤'
-			
+			messages.add_message(request,messages.INFO,"請檢查欄位")
+
 	else:
 		login_form=Loginform() #若不是POST，產生一個新的表單
-	return render(request,'login.html',locals())
+	return render(request,'authentication/login.html',locals())
 def logout(request):
 	request.session['account']=None
-	return render(request,'logout.html',locals())
+	return render(request,'authentication/logout.html',locals())

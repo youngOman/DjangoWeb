@@ -17,15 +17,20 @@ from django.contrib import admin
 from mainsite.views import index,video,showpost,memberdata,member_detail,register,logout,login
 from django.contrib.auth import views
 urlpatterns = [
+    path('authentication/',include([
+        path('accounts/register/', register, name='register'),
+        path('accounts/login/', login, name='login'),   
+        path('accounts/logout/', logout, name='logout'),
+        path('accounts/', include('allauth.urls'),name="google"),  # django-allauth網址
+    ])),
     path('admin/', admin.site.urls),    
     path('',index),
     path('video/',video),
     path('post/<slug:slug>/',showpost),
     path('post/<int:year>/<int:month>/<int:day>/<int:postid>/',showpost,name='post-url'), #呼叫views.py的method
     path('members/',memberdata),
-    path('members/<int:serialnum>/',member_detail),
-    path('accounts/register/', register, name='register'),
-    path('accounts/login/', login, name='login'),    
-    path('accounts/logout/', logout, name='logout'),
+    path('members/<int:serialnum>/',member_detail,name="members"),
+     
+    
 ]
     

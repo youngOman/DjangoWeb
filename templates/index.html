@@ -5,9 +5,6 @@
     <h3 style="font-family: 微軟正黑體;">文章列表</h3>
 {%endblock%}
 {%block content%}
-{% if useraccount%}
-    歡迎~{{useraccount}}
-{% endif %}
     {% for i in obj %}
         {%video i.video %}  
     {% endfor %}
