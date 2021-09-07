@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% block  headmessage%}
-    <h3>會員資料</h3>
-    <p>現在位置於{{path}}</p>
-    <a style="font-family: 微軟正黑體;" href="/">回列表</a>
-{% endblock  %}
+{% for member in members%}
+    <h3>{{member.name}}的個人資料</h3>
+{% endfor %}
+    
+    <a href="{% url 'member' %}">返回</a>
+{% endblock %}
 {% block content%}
     <table>
     <tr><th>會員ID</th><th>會員姓名</th><th>會員性別</th><th>會員email</th></tr>
     {% for member in members%}
         <p style="font-family: 微軟正黑體;font-size: 14pt;letter-spacing:2pt;">
             <tr>
-                <td><a href="{% url 'memberdetail' member.id %}">{{member.id}}</a></td>
+                <td>{{member.id}}</td>
                 <td>{{member.name}}</td>
                 <td>{{member.sex}}</td>
                 <td>{{member.email}}</td>
@@ -18,5 +20,4 @@
         </p>
     {% endfor %}
     </table>
-{% endblock  %}
-
+{% endblock %}

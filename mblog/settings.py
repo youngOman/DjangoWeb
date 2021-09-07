@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,9 +25,8 @@ SECRET_KEY = 'django-insecure-+s^se6wwcq%3%)sxku+v^@72l2x5t&oy@$elfp)+6k%wmj^19n
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
 # Application definition
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -49,6 +47,12 @@ INSTALLED_APPS = [
     # google provider
     'allauth.socialaccount.providers.google',
 ]
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+LOGIN_REDIRECT_URL = '/'
 SITE_ID=1
 
 MIDDLEWARE = [
@@ -91,11 +95,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -110,8 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -124,16 +123,12 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
 # PROJECT_PATH = os.path.abspath(os.path.dirname(__name__)) 
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'static'), #BASE_DIR=C:\Users\young\mysite
-]
+STATICFILES_DIRS=[os.path.join(BASE_DIR,'static'),] #BASE_DIR=C:\Users\young\mysite
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

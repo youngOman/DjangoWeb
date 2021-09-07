@@ -36,17 +36,16 @@ position: absolute;
 right: 20px;
 top: -45px;
 }
-
 .input-group input{  /*帳密輸入input*/
     position: relative;
     left: 40px;
     height: 40px;
-    width: 60%;
+    width: 65%;
 }
 
-.input-group-prepend span{
+.input-group-prepend span{ /*帳密輸入圖片*/
 position: relative;
-left: 40px;
+left:40px;
 width: 50px;
 background-color: #FFC312;
 color: black;

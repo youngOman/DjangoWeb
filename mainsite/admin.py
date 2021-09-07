@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post,Member,Item,User
+from .models import Post,Member,Item,Profile,MemberPost
 # Register your models here.
 from embed_video.admin import AdminVideoMixin
 
@@ -10,5 +10,6 @@ class Postadmin(admin.ModelAdmin):
 
 admin.site.register(Post,Postadmin)
 admin.site.register(Member)
-admin.site.register(Item, Videoadmin)
-admin.site.register(User)
+admin.site.register(Item,Videoadmin)
+admin.site.register(Profile)
+admin.site.register(MemberPost)

@@ -14,23 +14,24 @@ Including another URLconf
 """
 from django.urls import path,include
 from django.contrib import admin
-from mainsite.views import index,video,showpost,memberdata,member_detail,register,logout,login
-from django.contrib.auth import views
+from mainsite.views import index, logout,video,showpost,memberdetail,member,login,userinfo,addpost,signup,article
+from django.views.generic import TemplateView
 urlpatterns = [
     path('authentication/',include([
-        path('accounts/register/', register, name='register'),
-        path('accounts/login/', login, name='login'),   
-        path('accounts/logout/', logout, name='logout'),
-        path('accounts/', include('allauth.urls'),name="google"),  # django-allauth網址
+        path('login/', login, name='login'),   
+        path('/',logout,name='logout'),
+        path('signup/',signup,name="signup"),
+        path('accounts/',include('allauth.urls')),  # django-allauth google網址
     ])),
-    path('admin/', admin.site.urls),    
+    path('add_post/',addpost,name='addpost'),
+    path('article/',article,name='article'),        
+    path('admin/', admin.site.urls),
+    path('userinfo/',userinfo,name='userinfo'),        
     path('',index),
     path('video/',video),
-    path('post/<slug:slug>/',showpost),
+    path('post/<slug:slug>/',showpost,name='showpost'),
     path('post/<int:year>/<int:month>/<int:day>/<int:postid>/',showpost,name='post-url'), #呼叫views.py的method
-    path('members/',memberdata),
-    path('members/<int:serialnum>/',member_detail,name="members"),
-     
-    
-]
-    
+    path('member/',member,name="member"),
+    path('memberdetail/<str:pk>/',memberdetail,name='memberdetail'),
+
+] 

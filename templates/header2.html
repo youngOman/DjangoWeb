@@ -1,4 +1,5 @@
 {% load static %}<!--存取靜態檔-->
+{% load socialaccount %}
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id='navbar'>
@@ -13,9 +14,10 @@
             <a class="nav-link active" aria-current="page" href="/">首頁</a>
           </li>
         <li class="nav-item">
-            {% if useraccount %}
+        {% load account %}
+          {% if user.is_authenticated%}
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">歡迎~{{useraccount}}</a>
+            <a class="nav-link active" aria-current="page" href="/">歡迎~{{username}}</a>
             </li>
             <a class="nav-link" href="{% url 'logout' %}">登出</a>
             <li class="nav-item dropdown">
@@ -30,10 +32,19 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/members/{{members.serialnum}}" tabindex="-1" aria-disabled="false">會員資料</a>
+                <a class="nav-link" href="{% url 'member' %}" tabindex="-1" aria-disabled="false">會員資料</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'userinfo' %}" tabindex="-1" aria-disabled="false">個人資料</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'article' %}" tabindex="-1" aria-disabled="false">私人日記</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="{% url 'addpost' %}" tabindex="-1" aria-disabled="false">新增貼文</a>
             </li>
         </li>
-            {% else %}
+          {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">登入</a>
           </li>

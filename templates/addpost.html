@@ -1,0 +1,15 @@
+{%extends 'base.html'%} <!--繼承base.html模板-->
+{% load markdown_deux_tags %}<!--簡化HTML-->
+{% block title %}我想說....{% endblock  %}
+{%block content%}
+{% for message in messages%}
+  <div class="alert alert-{{message.tag}}">{{message}}</div>
+{% endfor %}
+<form method="POST">{% csrf_token %}
+    <table>
+    {{post_form.as_table}}
+    </table>
+    <input type="submit" value="張貼">
+    <input type="reset" value="重填">
+</form>
+{%endblock%}
