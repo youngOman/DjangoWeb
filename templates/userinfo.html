@@ -1,0 +1,8 @@
+{%extends 'base.html'%} <!--繼承base.html模板-->
+{% load markdown_deux_tags %}<!--簡化HTML-->
+{% block title %}我想說....{% endblock  %}
+{%block content%}
+{% for message in messages%}
+    <div class="alert alert-{{message.tags}}">{{message}}</div>
+{% endfor %} 
+{%endblock%}
