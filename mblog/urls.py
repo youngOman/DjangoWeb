@@ -14,23 +14,24 @@ Including another URLconf
 """
 from django.urls import path,include
 from django.contrib import admin
-from mainsite.views import index, logout,video,showpost,memberdetail,member,login,userinfo,addpost,signup,article
+from mainsite.views import index,UpdatePostView,ArticleDetailView,AddPostView,DeletePostview,logout,video,memberdetail,member,login,userinfo,register   #article
 from django.views.generic import TemplateView
 urlpatterns = [
     path('authentication/',include([
         path('login/', login, name='login'),   
-        path('/',logout,name='logout'),
-        path('signup/',signup,name="signup"),
+        path('',logout,name='logout'),
+        path('register/',register,name="register"),
         path('accounts/',include('allauth.urls')),  # django-allauth google網址
     ])),
-    path('add_post/',addpost,name='addpost'),
-    path('article/',article,name='article'),        
+    # path('article/',article,name='article'),
+    path('',index),
+    path('post_detail/<int:pk>/',ArticleDetailView.as_view(),name='post_detail'),
+    path('post/edit/<int:pk>',UpdatePostView.as_view(),name="Update_Post"), 
+    path('add_post/',AddPostView.as_view(),name='addpost'),
+    path('post/<int:pk>/remove',DeletePostview.as_view(),name='delete_post'),
     path('admin/', admin.site.urls),
     path('userinfo/',userinfo,name='userinfo'),        
-    path('',index),
     path('video/',video),
-    path('post/<slug:slug>/',showpost,name='showpost'),
-    path('post/<int:year>/<int:month>/<int:day>/<int:postid>/',showpost,name='post-url'), #呼叫views.py的method
     path('member/',member,name="member"),
     path('memberdetail/<str:pk>/',memberdetail,name='memberdetail'),
 

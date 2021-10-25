@@ -1,12 +1,13 @@
 {%extends 'base.html'%} <!--繼承base.html模板-->
 {% load markdown_deux_tags %}<!--簡化HTML-->
 {%block headmessage%}
-    <h3>{{post.title}}</h3> 
+    <h3>{{post.pub_title}}</h3> 
     <a style="font-family: 微軟正黑體;" href="/">回列表</a>
-    <a href='{% url 'post-url' 2020 12 1 01%}'>SHOW POST</a>
+    <small>By: {{post.author.first_name}}-{{post.author.last_name}}</small>
+
 {%endblock%}
 {%block content%}
     <p style="font-family: 微軟正黑體;font-size: 14pt;letter-spacing:2pt;">
-        {{post.body | markdown}}
+        {{post.pub_body | markdown}}
     </p>
 {%endblock%}

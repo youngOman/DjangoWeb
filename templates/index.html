@@ -8,18 +8,20 @@
     {% for i in obj %}
         {%video i.video %}  
     {% endfor %}
-    {%for post in posts%}
+    {%for post in posts %} <!--object_list django模板內的物件-->
     <div class="card">
         <div class="card-header" style="background-color: rgb(253, 253, 221);">
             <p style="font-family: 微軟正黑體;font-size: 14pt;font-weight: bold;">
-                <a href="{% url 'showpost' post.slug %}">{{post.title}}</a>
+                <a href="{% url 'post_detail' post.pk %}">{{post.pub_title}}</a> 
+                <small><a href="{% url 'Update_Post' post.pk %}">(edit)</a></small>
+                <small><a href="{% url 'delete_post' post.pk %}">(delete)</a></small>
             </p>
         </div>
         <div class="card-body">
-            <p>{{post.body | truncatechars:40}}</p><!--truncatechars顯示規定範圍內數字-->
+            <p>{{post.pub_body | truncatechars:40}}</p><!--truncatechars顯示規定範圍內數字-->
         </div><!--card-body-->
         <div class="card-footer text-muted" style="text-align: center;">
-            發佈時間:{{post.pub_date | date:"Y-m-d,h:m:s"}}
+            發佈時間:{{post.pub_date | date:"Y-m-d,h:m:s"}} By: {{post.author.first_name}}-{{post.author.last_name}} 
         </div>     
     </div><!--card-->
     {%endfor%}

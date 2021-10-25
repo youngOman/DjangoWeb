@@ -1,0 +1,13 @@
+{%extends 'base.html'%} <!--繼承base.html模板-->
+{% load markdown_deux_tags %}<!--簡化HTML-->
+{% block title %} mysite {% endblock  %}
+{%block headmessage%}
+    <h3 style="font-family: 微軟正黑體;">編輯貼文</h3>
+{%endblock%}
+{%block content%}
+    <form method="POST">{% csrf_token %}
+    <strong>確定?</strong>
+    <button class="btn btn-danger">刪除貼文</button>
+    </form>
+{%endblock%}
+    
