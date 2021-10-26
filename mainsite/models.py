@@ -19,7 +19,8 @@ class Post(models.Model):
 	def __str__(self):#顯示在admin的資料
 		return self.pub_title + '|' +str(self.author)
 	def get_absolute_url(self):
-		return reverse('article_detail',args=(str(self.id))) #新增貼文後導向新增好的貼文的頁面
+		return reverse('post_detail',args=(str(self.id))) #新增貼文後導向新增好的貼文的頁面
+		# return reverse("index")
 
 class Category(models.Model): #方便以後新增、修改分類
 	name=models.CharField(max_length=255)

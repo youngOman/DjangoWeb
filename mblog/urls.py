@@ -24,7 +24,7 @@ urlpatterns = [
         path('accounts/',include('allauth.urls')),  # django-allauth google網址
     ])),
     # path('article/',article,name='article'),
-    path('',index),
+    path('',index,name="home"),
     path('post_detail/<int:pk>/',ArticleDetailView.as_view(),name='post_detail'),
     path('post/edit/<int:pk>',UpdatePostView.as_view(),name="Update_Post"), 
     path('add_post/',AddPostView.as_view(),name='addpost'),

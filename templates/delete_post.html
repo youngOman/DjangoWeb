@@ -5,6 +5,7 @@
     <h3 style="font-family: 微軟正黑體;">編輯貼文</h3>
 {%endblock%}
 {%block content%}
+<h3>正在刪除:{{post.pub_title}}</h3>
     <form method="POST">{% csrf_token %}
     <strong>確定?</strong>
     <button class="btn btn-danger">刪除貼文</button>

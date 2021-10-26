@@ -32,7 +32,7 @@ class UpdatePostView(UpdateView): #as_view的寫法
 class DeletePostview(DeleteView):
 	model=Post
 	template_name='delete_post.html'
-	success_url=reverse_lazy('index')
+	success_url=reverse_lazy('home')
 	
 
 def video(request):
