@@ -1,0 +1,36 @@
+{%extends 'base.html'%} <!--繼承base.html模板-->
+{% load embed_video_tags %}
+{%block title %} mysite {%endblock%}
+{%block headmessage%}
+    <h3 style="font-family: 微軟正黑體;">文章列表</h3>
+{%endblock%}
+{%block content%}
+    {% for i in obj %}
+        {%video i.video %}  
+    {% endfor %}
+{% if  Category_posts %} <!--如果分類存在-->
+ 
+    {% for post in Category_posts %}
+        <div class="card">
+            <div class="card-header" style="background-color: rgb(253, 253, 221);">
+                <p style="font-family: 微軟正黑體;font-size: 14pt;font-weight: bold;">
+                    <a href="{% url 'post_detail' post.pk %}">{{post.pub_title}}</a>--<a href="{% url 'category_page' post.category%}">{{post.category}}</a>
+                    {% if user.is_authenticated %}
+                    <small><a href="{% url 'Update_Post' post.pk %}">(edit)</a></small>
+                    <small><a href="{% url 'delete_post' post.pk %}">(delete)</a></small>
+                    {% endif %}
+                </p>
+            </div>
+            <div class="card-body">
+                <p>{{post.pub_body | truncatechars:40}}</p><!--truncatechars顯示規定範圍內數字-->
+            </div><!--card-body-->
+            <div class="card-footer text-muted" style="text-align: center;">
+                發佈時間:{{post.pub_date | date:"Y-m-d,h:m:s"}} By: {{post.author.first_name}}-{{post.author.last_name}} 
+            </div>     
+        </div><!--card-->
+    {% endfor %}
+{% else %}
+<h2>目前並無您想找的-->{{ cats }} 分類:(....要不自己建一個?<a href="{% url 'add_category' %}">新增分類</a></h2>
+{% endif %}
+
+{%endblock%}

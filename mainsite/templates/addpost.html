@@ -1,0 +1,23 @@
+{%extends 'base.html'%} <!--繼承base.html模板-->
+{% load markdown_deux_tags %}<!--簡化HTML-->
+{% block title %} mysite {% endblock  %}
+{%block headmessage%}
+    <h3 style="font-family: 微軟正黑體;">我想說....</h3>
+{%endblock%}
+{%block content%}
+{% if user.is_authenticated %} <!--沒登入就無法新增貼文-->
+<p><a href="{% url 'add_category' %}">新增分類</a></p>
+{% for message in messages%}
+  <div class="alert alert-{{message.tag}}">{{message}}</div>
+{% endfor %}
+
+    <form method="POST">{% csrf_token %}
+        {{form.as_p}}
+      <input class="btn btn-primary" type="submit" value="送出">
+      <input class="btn btn-primary" type="reset" value="重填">
+    </form>
+{% else %}
+<h3>不是全婆幫會員還敢在這放縱!</h3>
+{% endif %}
+
+{%endblock%}

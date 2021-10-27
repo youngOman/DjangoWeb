@@ -11,23 +11,23 @@ class Post(models.Model):
 	title_tag=models.CharField(max_length=255)
 	author=models.ForeignKey(User,on_delete=models.CASCADE)
 	pub_body=models.TextField()
-	# category=models.CharField(max_length=255,default='coding')
+	category=models.CharField(max_length=255,default='KAWAII')
 	slug=models.CharField(max_length=200)
 	pub_date=models.DateTimeField(auto_now_add=True)
-	class Meta:
-		ordering =('-pub_date',)
+
 	def __str__(self):#顯示在admin的資料
 		return self.pub_title + '|' +str(self.author)
 	def get_absolute_url(self):
-		return reverse('post_detail',args=(str(self.id))) #新增貼文後導向新增好的貼文的頁面
-		# return reverse("index")
+		# return reverse('post_detail',args=(str(self.id))) #新增貼文後導向新增好的貼文的頁面
+		return reverse('home')
+
 
 class Category(models.Model): #方便以後新增、修改分類
-	name=models.CharField(max_length=255)
+	Category_name=models.CharField(max_length=255)
 	def __str__(self):
-		return self.name
+		return self.Category_name
 	def get_absolute_url(self):
-		return reverse('/')
+		return reverse('home')
 # class Comment(models.Model):
 # 	post=
 class Member(models.Model):
@@ -48,7 +48,6 @@ class Profile(models.Model): #Django預設Model.User欄位 user去跟django預�
 	website=models.URLField(null=True)
 	def __str__(self):
 		return self.user.username
-
 class Item(models.Model):
     video = EmbedVideoField()  # same like models.URLField()
 

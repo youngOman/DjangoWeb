@@ -35,8 +35,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #pip
     'mainsite',
+    'members',
+    #pip
+    
     'markdown_deux',
     'embed_video',
     #allauth
@@ -53,7 +55,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL="/"
+LOGOUT_REDIRECT_URL='/'
 SITE_ID=1
 
 MIDDLEWARE = [

@@ -20,17 +20,23 @@
             <a class="nav-link active" aria-current="page" href="/">歡迎~{{username}}</a>
             </li>
             <a class="nav-link" href="{% url 'logout' %}">登出</a>
-            <li class="nav-item dropdown">
+            {% if category_menu %}
+            <li class="nav-item dropdown"><!--文章分類下拉式選單-->
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    liveStream
+                    文章分類
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="/video/">Anime</a></li>
-                    <li><a class="dropdown-item" href="#">Sleep</a></li>
-                    <li><a class="dropdown-item" href="#">Chill</a></li>
-                    <li><hr class="dropdown-divider"></li>
+                {% for cats in category_menu%}
+                  <li><a class="dropdown-item" href="{% url 'category_page' cats %}">{{cats}}</a></li>
+                {% endfor %}
                 </ul>
+            </li><!--文章分類下拉式選單-->
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'category_list' %}" tabindex="-1" aria-disabled="false">文章分類</a>
             </li>
+            {% endif %}
+            
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'member' %}" tabindex="-1" aria-disabled="false">會員資料</a>
             </li>

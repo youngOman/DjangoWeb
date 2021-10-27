@@ -1,0 +1,9 @@
+{%extends 'base.html'%} <!--繼承base.html模板-->
+{% load markdown_deux_tags %}<!--簡化HTML-->
+{% block title %} mysite {% endblock  %}
+{%block content%}
+    <form method="POST">{% csrf_token %}
+        {{form.as_p}}
+      <input class="btn btn-primary" type="submit" value="註冊">
+    </form>
+{%endblock%}
